@@ -29,13 +29,3 @@ export const {actions, selectors, ...AuthFeature} = createSlice({
         logoutConfirmationDismiss: noopReducer()
     }
 });
-
-export const selectUser = createSelector(
-    selectors.selectStatus,
-    status => status.user
-);
-
-export const selectLoggedIn = createSelector(
-    selectUser,
-    user => !!user
-);

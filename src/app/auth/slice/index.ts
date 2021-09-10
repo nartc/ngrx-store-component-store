@@ -1,6 +1,18 @@
-import {actions, selectLoggedIn, selectors, selectUser} from './auth.slice';
+import {createSelector} from "@ngrx/store";
+import {actions, selectors} from './auth.slice';
 
 export {AuthFeature} from './auth.slice';
+
+const selectUser = createSelector(
+    selectors.selectStatus,
+    status => status.user
+);
+
+const selectLoggedIn = createSelector(
+    selectUser,
+    user => !!user
+);
+
 
 export const AuthSelectors = {
     selectUser,
