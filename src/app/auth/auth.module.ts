@@ -10,7 +10,7 @@ import {
 } from '@example-app/auth/components';
 
 import { AuthEffects } from '@example-app/auth/effects';
-import * as fromAuth from '@example-app/auth/reducers';
+import * as fromAuth from '@example-app/auth/slice';
 import { MaterialModule } from '@example-app/material';
 import { AuthRoutingModule } from './auth-routing.module';
 
@@ -26,10 +26,7 @@ export const COMPONENTS = [
     ReactiveFormsModule,
     MaterialModule,
     AuthRoutingModule,
-    StoreModule.forFeature({
-      name: fromAuth.authFeatureKey,
-      reducer: fromAuth.reducers,
-    }),
+    StoreModule.forFeature(fromAuth.AuthFeature),
     EffectsModule.forFeature([AuthEffects]),
   ],
   declarations: COMPONENTS,
